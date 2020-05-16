@@ -35,12 +35,12 @@
 	<form>
 		<div>
 			<label for="current-password">Current Password</label>
-			<input type="password" name="current-password" id="current-password">
+			<input class="passwords" type="password" name="current-password" id="current-password">
 		</div>
 
 		<div>
 			<label for="new-password">New Password</label>
-			<input type="password" name="new-password" id="new-password">
+			<input class="passwords" type="password" name="new-password" id="new-password">
 		</div>
 
 		<div>
@@ -56,7 +56,18 @@
 	</form>
 
 	<script>
+		var passwords = Array.prototype.slice.call(document.querySelectorAll('.passwords'));
+		var showPassword = document.querySelector('#show-passwords')
 
+		showPassword.addEventListener('click', function (event) {
+			passwords.forEach(function (password, index) {
+				if (event.target.checked) {
+					password.type = 'text'
+				} else {
+					password.type = 'password'
+				}
+			});
+		}, false);
 	</script>
 </body>
 </html>
